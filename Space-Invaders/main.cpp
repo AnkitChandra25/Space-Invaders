@@ -1,80 +1,135 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Header/GameService.h"
 
+using namespace std;
+
+/*
 class Player
 {
+  private:
+      // private properties
+      int health = 3;
+      sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
+      int player_score = 0;
+      int movement_speed = 5;
 
-private:
+  public:
+      // public properties
+      sf::Texture player_texture;
+      sf::Sprite player_sprite;
 
-    int health = 3;
-    sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
-    int movement_speed = 5;
-    int player_score = 0;
+      Player()
+      {
+          cout << "Default Construtctor called\n";
+      };
 
-public:
+      Player(int initialHealth, int speed)
+      {
+          health = initialHealth;
+          movement_speed = speed;
 
-    // Properties
-    sf::Texture player_texture;
-    sf::Sprite player_sprite;
+          cout << "Custom constructor called! Player created with health: " << health << ", speed: " << movement_speed << "\n";
+      };
 
-    //functions
-    void move(float offsetX) {
-        position.x += offsetX;
-    }
+      ~Player()
+      {
+          cout << "PLayer destroyed. Health: " << health << ", Movement Speed: " << movement_speed << endl;
+      }
 
-    int getMoveSpeed() {
-        return movement_speed;
-    }
+      // public set and get function
+      void move(float offsetX)
+      {
+          position.x += offsetX;
+      }
 
-    sf::Vector2f getPosition() {
-        return position;
-    }
+      int getMoveSpeed()
+      {
+          return movement_speed;
+      }
+
+      sf::Vector2f getPosition()
+      {
+          return position;
+      }
+
 
 };
 
-int main() {
-    // Define the video mode (dimensions)
-    sf::VideoMode videoMode = sf::VideoMode(1920, 1080);
+*/
 
-    // Create a window object with specific dimensions and a title
-    sf::RenderWindow window(videoMode, "SFML Window");
+int main()
+{
+    // define the video mode (with dimensions)
+    //sf::VideoMode videoMode = *(new sf::VideoMode(800, 600));
 
-    // Using default constructor
-    Player player;
+    //create window object with specific dimensions and title
+    //sf::RenderWindow* window = new sf::RenderWindow(videoMode, "Space Invaders");
 
-    // Load the player ship texture  
-    player.player_texture.loadFromFile("assets/textures/player_ship.png");
+    // Player object
+    //Player player;
 
-    // Set the player sprite variable to the player ship texture
-    player.player_sprite.setTexture(player.player_texture);
+    //Player player1;
 
-    while (window.isOpen()) {
+    //Player player2(100, 3);
+
+    // load player ship texture
+    //player.player_texture.loadFromFile("assets/textures/player_ship.png");
+
+    // set the player sprite
+    //player.player_sprite.setTexture(player.player_texture);
+
+    // game loop
+    /*
+    while (window->isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            // Check for window closure
+        while (window->pollEvent(event)) {
+            // check for window close
             if (event.type == sf::Event::Closed)
-                window.close();
+                window->close();
         }
 
-        // Handle keyboard input
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            player.move(-1.0f * player.getMoveSpeed());
+        // handling keyboard inputs
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            player.move(-0.01f * player.getMoveSpeed());
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            player.move(1.0f * player.getMoveSpeed());
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            player.move(0.01f * player.getMoveSpeed());
         }
 
-        // Clear the window
-        window.clear(sf::Color::Blue);
+        // clear window
+        window->clear(sf::Color::Blue);
 
-        // Set the position of the player sprite
+        // setting position of player sprite
         player.player_sprite.setPosition(player.getPosition());
 
-        // Draw the player sprite
-        window.draw(player.player_sprite);
+        // Draw Content here
+        //-------------------
+        window->draw(player.player_sprite);
 
-        // Display what was drawn
-        window.display();
+        // ------------------
+
+        //displat the content
+        window->display();
+
+
+        //std::cout << "\nPlayer Score: " << player.getScore() << "\n";
+
+        //player.setScore(100);
+
+        //std::cout << "Player modified score: " << player.getScore() << "\n";
+    }
+    */
+
+    GameService game_service;
+    game_service.ignite();
+
+    while (game_service.isRunning())
+    {
+        game_service.update();
+        game_service.render();
     }
 
     return 0;
