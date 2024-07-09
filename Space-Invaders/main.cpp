@@ -6,13 +6,14 @@ using namespace std;
 
 int main()
 {
-    GameService game_service;
-    game_service.ignite();
+    GameService* game_service = new GameService();
 
-    while (game_service.isRunning())
+    game_service->ignite();
+
+    while (game_service->isRunning())
     {
-        game_service.update();
-        game_service.render();
+        game_service->update();
+        game_service->render();
     }
 
     return 0;

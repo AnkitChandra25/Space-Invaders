@@ -1,4 +1,5 @@
 #pragma once
+#include "../Header/GraphicService.h"
 #ifndef SERVICELOCATOR_H
 #define SERVICELOCATOR_H
 
@@ -9,7 +10,10 @@ public:
     void update();
     void render();
 
+    GraphicService* getGraphicService();
+
 private:
+    GraphicService* graphic_service;
     ServiceLocator();
     ~ServiceLocator();
     void createServices();
