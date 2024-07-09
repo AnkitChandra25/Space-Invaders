@@ -38,7 +38,11 @@ void GameService::destroy()
 // Updates the game logic by delegating to the service locator's update method.
 void GameService::update() {
 
-	service_locator->update(); // Call update on the service locator which then updates all its managed services
+	// Process Events.
+	service_locator->getEventService()->processEvents();
+
+	// Update Game Logic.
+	service_locator->update();
 }
 
 // Clears the window then display it.
