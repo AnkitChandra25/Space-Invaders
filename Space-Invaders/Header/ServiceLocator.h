@@ -1,6 +1,8 @@
 #pragma once
 #include "../Header/GraphicService.h"
 #include "../Header/EventService.h"
+#include "../Header/PlayerService.h"
+
 #ifndef SERVICELOCATOR_H
 #define SERVICELOCATOR_H
 
@@ -13,10 +15,13 @@ public:
     
     GraphicService* getGraphicService();
     EventService* getEventService();
+    PlayerService* getPlayerService();
 
 private:
     GraphicService* graphic_service;
     EventService* event_service;
+    PlayerService* player_service;
+
     ServiceLocator();
     ~ServiceLocator();
     void createServices();
