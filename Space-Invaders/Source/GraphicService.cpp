@@ -14,6 +14,7 @@ GraphicService::~GraphicService() {
 // Initializes the graphic service by creating a new game window.
 void GraphicService::initialize() {
 	game_window = createGameWindow(); // Assigns a new game window to the game_window pointer
+	game_window->setFramerateLimit(60);
 }
 
 // Creates a new SFML RenderWindow object with specified video mode and title.
@@ -32,6 +33,8 @@ void GraphicService::onDestroy() {
 	delete(video_mode); // Deletes the video mode object
 	delete(game_window); // Deletes the game window object
 }
+
+
 
 // Placeholder function for game update logic.
 void GraphicService::update() { }

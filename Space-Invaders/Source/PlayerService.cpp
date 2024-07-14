@@ -1,6 +1,7 @@
 #include "../Header/PlayerService.h"
 #include "../Header/ServiceLocator.h"
 #include "../Header/EventService.h"
+#include "../Header/TimeService.h"
 
 PlayerService::PlayerService()
 {
