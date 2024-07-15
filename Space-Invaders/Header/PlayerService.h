@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../Header/Player/PlayerController.h"
 
 class PlayerService
 {
 
 private:
-
+    
     int health = 3;
     sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
     int movement_speed = 5;
