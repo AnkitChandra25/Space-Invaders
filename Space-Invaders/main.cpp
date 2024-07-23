@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Header/GameService.h"
+#include "../../Header/Gameplay/GameService.h"
 
-using namespace std;
+using namespace Main;
 
 int main()
 {
+    //GameService* gameservive;
     GameService* game_service = new GameService();
 
     game_service->ignite();

@@ -1,65 +1,71 @@
 #include "../Header/PlayerService.h"
-#include "../Header/ServiceLocator.h"
-#include "../Header/EventService.h"
+#include "../Header/Global/ServiceLocator.h"
+#include "../Header/Event/EventService.h"
 #include "../Header/TimeService.h"
 
-PlayerService::PlayerService()
-{
-	game_window = nullptr;
-}
+namespace Player {
+    using namespace Global;
 
-PlayerService::~PlayerService() = default;
-
-//init
-void PlayerService::initialize()
-{
-	game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-	initializePlayerSprite();
-}
-
-//take our players input in update, then set the position.
-//order is important here
-void PlayerService::update()
-{
-	processPlayerInput();
-	player_sprite.setPosition(getPlayerPosition());
-}
-
-void PlayerService::render()
-{
-	game_window->draw(player_sprite);
-}
-
-void PlayerService::processPlayerInput()
-{
-    EventService* event_service = ServiceLocator::getInstance()->getEventService(); //get the event service object created in service locator
-
-    if (event_service->isKeyboardEvent()) //check if a key has been pressed
-    {
-        if (event_service->pressedLeftKey())
+        PlayerService::PlayerService()
         {
-            move(-1.0f * getMoveSpeed());
+            game_window = nullptr;
         }
 
-        if (event_service->pressedRightKey())
+        PlayerService::~PlayerService() = default;
+
+        //init
+        void PlayerService::initialize()
         {
-            move(1.0f * getMoveSpeed());
+            game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+            initializePlayerSprite();
         }
-    }
-}
 
-void PlayerService::initializePlayerSprite()
-{
-	if (player_texture.loadFromFile(player_texture_path))
-	{
-		player_sprite.setTexture(player_texture);
-	}
-}
+        //take our players input in update, then set the position.
+        //order is important here
+        void PlayerService::update()
+        {
+            processPlayerInput();
+            player_sprite.setPosition(getPlayerPosition());
+        }
 
-void PlayerService::move(float offsetX) {
-	position.x += offsetX;
-}
+        void PlayerService::render()
+        {
+            game_window->draw(player_sprite);
+        }
+        
+        void PlayerService::processPlayerInput()
+        {
+            Event::EventService* event_service = ServiceLocator::getInstance()->getEventService(); //get the event service object created in service locator
 
-//helper functions
-sf::Vector2f PlayerService::getPlayerPosition() { return position; }
-int PlayerService::getMoveSpeed() { return movement_speed; }
+            if (event_service->isKeyboardEvent()) //check if a key has been pressed
+            {
+                if (event_service->pressedLeftKey())
+                {
+                    move(-1.0f * getMoveSpeed());
+                }
+
+                if (event_service->pressedRightKey())
+                {
+                    move(1.0f * getMoveSpeed());
+                }
+            }
+        }
+        
+        void PlayerService::initializePlayerSprite()
+        {
+            if (player_texture.loadFromFile(player_texture_path))
+            {
+                player_sprite.setTexture(player_texture);
+            }
+        }
+
+
+
+        void PlayerService::move(float offsetX) {
+            position.x += offsetX;
+        }
+
+        //helper functions
+        sf::Vector2f PlayerService::getPlayerPosition() { return position; }
+        int PlayerService::getMoveSpeed() { return movement_speed; }
+}
