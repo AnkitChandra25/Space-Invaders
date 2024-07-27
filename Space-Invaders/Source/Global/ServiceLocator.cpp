@@ -7,6 +7,7 @@ namespace Global {
 	using namespace Time;
 	using namespace Event;
 	using namespace Player;
+	using namespace UI;
 
 	// Constructor: Initializes the graphic_service pointer to null and creates services.
 	ServiceLocator::ServiceLocator() {
@@ -72,4 +73,5 @@ namespace Global {
 	EventService* ServiceLocator::getEventService() { return event_service; }
 	PlayerService* ServiceLocator::getPlayerService() { return player_service; }
 	TimeService* ServiceLocator::getTimeService() { return time_service; }
+	UIService* ServiceLocator::getUIService() { return ui_service; }
 }
