@@ -1,5 +1,6 @@
 #include "../../Header/UI/UIService.h"
 #include "../../Header/Gameplay/GameService.h"
+#include "../../Header/UI/MainMenu/MainMenuController.h"
 
 namespace UI
 {
@@ -34,6 +35,7 @@ namespace UI
 
 	void UIService::render()
 	{
+		main_menu_controller->render();
 	}
 
 	void UIService::initializeControllers()

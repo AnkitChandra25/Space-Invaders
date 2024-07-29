@@ -2,6 +2,7 @@
 #include "../../Header/Graphic/GraphicService.h"
 #include "../../Header/Event/EventService.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/UI/UIService.h"
 
 
 namespace Main
