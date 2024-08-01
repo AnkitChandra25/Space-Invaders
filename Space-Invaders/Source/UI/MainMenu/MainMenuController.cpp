@@ -6,23 +6,25 @@
 
 namespace UI
 {
-    namespace MainMenu
+    namespace MainMenu //nested namespace since everything in MainMenu exists inside UI
     {
         using namespace Global;
         using namespace Main;
         using namespace Graphic;
         using namespace Event;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of a30892c (Implement Main Menu Sprites)
 
         MainMenuUIController::MainMenuUIController() { game_window = nullptr; }
 
         void MainMenuUIController::initialize()
         {
-            game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-            initializeBackgroundImage();
-            initializeButtons();
+            game_window = Global:: ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
         }
 
+<<<<<<< HEAD
         void MainMenuUIController::initializeBackgroundImage()
         {   //check if a texture loaded properly
             if (background_texture.loadFromFile(background_texture_path))
@@ -118,16 +120,17 @@ namespace UI
         void MainMenuUIController::update()
         {
             processButtonInteractions();
+=======
+        void MainMenuUIController::update()
+        {
+>>>>>>> parent of a30892c (Implement Main Menu Sprites)
         }
 
         void MainMenuUIController::render()
         {
-            game_window->draw(background_sprite);
-            game_window->draw(play_button_sprite);
-            game_window->draw(instructions_button_sprite);
-            game_window->draw(quit_button_sprite);
         }
 
+<<<<<<< HEAD
 
         bool MainMenuUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
         {
@@ -137,5 +140,7 @@ namespace UI
         }
 
 
+=======
+>>>>>>> parent of a30892c (Implement Main Menu Sprites)
     }
 }

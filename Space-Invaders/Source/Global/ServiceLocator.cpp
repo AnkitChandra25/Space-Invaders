@@ -15,7 +15,6 @@ namespace Global {
 		event_service = nullptr;
 		player_service = nullptr;
 		time_service = nullptr;
-		ui_service = nullptr;
 		createServices(); // Call createServices to instantiate services
 	}
 
@@ -30,7 +29,6 @@ namespace Global {
 		event_service = new EventService();
 		player_service = new PlayerService();
 		time_service = new TimeService();
-		ui_service = new UIService();
 	}
 
 	// Deletes allocated services to prevent memory leaks, specifically the graphic service.
@@ -40,7 +38,6 @@ namespace Global {
 		delete(event_service);
 		delete(player_service);
 		delete(time_service);
-		delete(ui_service);
 	}
 
 	// Returns a pointer to ServiceLocator.
@@ -55,7 +52,6 @@ namespace Global {
 		event_service->initialize();
 		player_service->initialize();
 		time_service->initialize();
-		ui_service->initialize();
 	}
 
 	// Updates the state of the graphic service.
@@ -64,14 +60,12 @@ namespace Global {
 		event_service->update();
 		player_service->update();
 		time_service->update();
-		ui_service->update();
 	}
 
 	// Renders using the graphic service.
 	void ServiceLocator::render() {
 		graphic_service->render(); // Render graphic service
 		player_service->render();
-		ui_service->render();
 	}
 
 	// Returns a pointer to the currently set graphic service.

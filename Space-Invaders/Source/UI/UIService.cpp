@@ -1,6 +1,5 @@
 #include "../../Header/UI/UIService.h"
 #include "../../Header/Gameplay/GameService.h"
-#include "../../Header/UI/MainMenu/MainMenuController.h"
 
 namespace UI
 {
@@ -46,6 +45,7 @@ namespace UI
 
 	void UIService::render()
 	{
+<<<<<<< HEAD
 		main_menu_controller->render();
 		switch (GameService::getGameState())
 		{
@@ -53,6 +53,8 @@ namespace UI
 			return main_menu_controller->render();
 			break;
 		}
+=======
+>>>>>>> parent of a30892c (Implement Main Menu Sprites)
 	}
 
 	
