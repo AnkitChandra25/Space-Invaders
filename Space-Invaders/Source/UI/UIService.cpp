@@ -24,6 +24,11 @@ namespace UI
 		destroy();
 	}
 
+	void UIService::initializeControllers()
+	{
+		main_menu_controller->initialize();
+	}
+
 	void UIService::initialize()
 	{
 		initializeControllers();
@@ -31,17 +36,26 @@ namespace UI
 
 	void UIService::update()
 	{
+		switch (GameService::getGameState())
+		{
+		case GameState::MAIN_MENU:
+			return main_menu_controller->update();;
+			break;
+		}
 	}
 
 	void UIService::render()
 	{
 		main_menu_controller->render();
+		switch (GameService::getGameState())
+		{
+		case GameState::MAIN_MENU:
+			return main_menu_controller->render();
+			break;
+		}
 	}
 
-	void UIService::initializeControllers()
-	{
-		main_menu_controller->initialize();
-	}
+	
 
 	void UIService::destroy()
 	{
