@@ -2,6 +2,7 @@
 #include "../../Header/Gameplay/GameService.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Graphic/GraphicService.h"
+#include "../../Header/Event/EventService.h"
 
 namespace UI
 {
@@ -10,6 +11,7 @@ namespace UI
         using namespace Global;
         using namespace Main;
         using namespace Graphic;
+        using namespace Event;
 
 
         MainMenuUIController::MainMenuUIController() { game_window = nullptr; }
@@ -66,6 +68,7 @@ namespace UI
             play_button_sprite.setTexture(play_button_texture);
             instructions_button_sprite.setTexture(instructions_button_texture);
             quit_button_sprite.setTexture(quit_button_texture);
+        
         }
 
 
@@ -92,9 +95,29 @@ namespace UI
             instructions_button_sprite.setPosition({ x_position, 700.f });
             quit_button_sprite.setPosition({ x_position, 900.f });
         }
+
+        void MainMenuUIController::processButtonInteractions()
+        {
+            sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
+
+            if (clickedButton(&play_button_sprite, mouse_position))
+            {
+                std::printf("mouse is pressed");
+                GameService::setGameState(GameState::GAMEPLAY);
+            }
+
+            if (clickedButton(&instructions_button_sprite, mouse_position))
+            {
+                printf("Clicked Instruction Button \\n");
+            }
+
+            if (clickedButton(&quit_button_sprite, mouse_position))
+                game_window->close();
+        }
+
         void MainMenuUIController::update()
         {
-
+            processButtonInteractions();
         }
 
         void MainMenuUIController::render()
@@ -103,6 +126,14 @@ namespace UI
             game_window->draw(play_button_sprite);
             game_window->draw(instructions_button_sprite);
             game_window->draw(quit_button_sprite);
+        }
+
+
+        bool MainMenuUIController::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
+        {
+            
+            Event::EventService* event_service = Global::ServiceLocator::getInstance()->getEventService();
+            return event_service->pressedLeftMouseButton() && button_sprite->getGlobalBounds().contains(mouse_position);
         }
 
 
