@@ -19,6 +19,7 @@ namespace Event
     void EventService::update()
     {
         //for later
+        processEvents();
     }
 
     void EventService::processEvents()
