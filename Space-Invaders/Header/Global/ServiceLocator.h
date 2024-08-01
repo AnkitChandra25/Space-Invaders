@@ -3,6 +3,8 @@
 #include "../Graphic/GraphicService.h"
 #include "../PlayerService.h"
 #include "../TimeService.h"
+#include "../UI/UIService.h"
+
 
 #ifndef SERVICELOCATOR_H
 #define SERVICELOCATOR_H
@@ -20,12 +22,14 @@ namespace Global {
         Event::EventService* getEventService();
         Player::PlayerService* getPlayerService();
         Time::TimeService* getTimeService();
+        UI::UIService* getUIService();
 
     private:
         Graphic::GraphicService* graphic_service;
         Event::EventService* event_service;
         Player::PlayerService* player_service;
         Time::TimeService* time_service;
+        UI::UIService* ui_service;
 
         ServiceLocator();
         ~ServiceLocator();
