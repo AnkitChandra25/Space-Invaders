@@ -4,6 +4,7 @@
 #include <SFML/Window/Event.hpp>
 
 namespace Event {
+
 	enum class ButtonState
 	{
 		PRESSED,
@@ -28,10 +29,8 @@ namespace Event {
 		ButtonState A_button_state;
 		ButtonState D_button_state;
 
-		//....some other code
 		void updateMouseButtonsState(ButtonState& current_button_state, sf::Mouse::Button mouse_button);
 		void updateKeyboardButtonsState(ButtonState& current_button_state, sf::Keyboard::Key keyboard_button);
-
 
 
 	public:

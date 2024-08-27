@@ -5,7 +5,6 @@
 #include "../TimeService.h"
 #include "../UI/UIService.h"
 
-
 #ifndef SERVICELOCATOR_H
 #define SERVICELOCATOR_H
 

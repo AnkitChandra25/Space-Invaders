@@ -7,7 +7,7 @@ namespace Event
 {
     using namespace Global;
 
-    EventService::EventService() {game_window = nullptr;}
+    EventService::EventService() { game_window = nullptr; }
 
     EventService::~EventService() = default; //calls the default destructor
 
@@ -18,8 +18,6 @@ namespace Event
 
     void EventService::update()
     {
-        //for later
-        //processEvents();
         updateMouseButtonsState(left_mouse_button_state, sf::Mouse::Left);
         updateMouseButtonsState(right_mouse_button_state, sf::Mouse::Right);
         updateKeyboardButtonsState(left_arrow_button_state, sf::Keyboard::Left);
@@ -45,7 +43,6 @@ namespace Event
     {
         if (sf::Mouse::isButtonPressed(mouse_button))
         {
-            
             switch (current_button_state)
             {
             case ButtonState::RELEASED:
@@ -61,6 +58,7 @@ namespace Event
             current_button_state = ButtonState::RELEASED;
         }
     }
+
     void EventService::updateKeyboardButtonsState(ButtonState& current_button_state, sf::Keyboard::Key keyboard_button)
     {
         if (sf::Keyboard::isKeyPressed(keyboard_button))
@@ -95,24 +93,19 @@ namespace Event
 
     //bool EventService::pressedLeftKey() { return game_event.key.code == sf::Keyboard::Left; }
     //bool EventService::pressedRightKey() { return game_event.key.code == sf::Keyboard::Right; }
+    /*
 
-    
-    /*bool EventService::pressedLeftMouseButton()
+    bool EventService::pressedLeftMouseButton()
     {
-        // check if a mouse button was pressed and which mouse button it was
         return game_event.type == sf::Event::MouseButtonPressed && game_event.mouseButton.button == sf::Mouse::Left;
     }
 
     bool EventService::pressedRightMouseButton()
     {
-        
-        // same as above for the right button, if we want to we can move the mouse button
-        // press check to another function altogether.
-        
         return game_event.type == sf::Event::MouseButtonPressed && game_event.mouseButton.button == sf::Mouse::Right;
     }
     */
-    
+
 
     bool EventService::pressedLeftKey() { return left_arrow_button_state == ButtonState::HELD; }
 

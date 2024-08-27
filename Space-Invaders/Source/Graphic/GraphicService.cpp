@@ -19,17 +19,9 @@ namespace Graphic {
 	}
 
 	// Creates a new SFML RenderWindow object with specified video mode and title.
-<<<<<<< HEAD
-	sf::RenderWindow* GraphicService::createGameWindow()
-	{
-		setVideoMode();                                             															 //setting fullscreen
-		//return new sf::RenderWindow(*video_mode, game_window_title, sf::Style::Fullscreen);
-		return new sf::RenderWindow(*video_mode, game_window_title, sf::Style::Fullscreen);
-=======
 	sf::RenderWindow* GraphicService::createGameWindow() {
 		setVideoMode(); // Sets up the video mode for the window
-		return new sf::RenderWindow(*video_mode, game_window_title); // Creates and returns a new RenderWindow object
->>>>>>> parent of a30892c (Implement Main Menu Sprites)
+		return new sf::RenderWindow(*video_mode, game_window_title, sf::Style::Fullscreen); // Creates and returns a new RenderWindow object
 	}
 
 	// Sets up the video mode for the game window using specified dimensions and system's color depth.

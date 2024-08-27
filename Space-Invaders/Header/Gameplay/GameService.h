@@ -8,8 +8,8 @@ namespace Main
     enum class GameState //create the enum
     {
         BOOT,
-            MAIN_MENU,
-            GAMEPLAY,
+        MAIN_MENU,
+        GAMEPLAY,
     };
 
     class ServiceLocator;
@@ -20,8 +20,8 @@ namespace Main
 
         Global::ServiceLocator* service_locator;
         sf::RenderWindow* game_window;
+        static GameState current_state;
 
-        static GameState current_state; // what is that static keyword??? We will discuss this later.
         void initialize();
         void initializeVariables();// Handles game initialization.
         void destroy();			// Handles cleanup tasks.
@@ -32,11 +32,11 @@ namespace Main
         GameService();			// Constructor for initializing the GameService object.
         ~GameService();	// Destructor for cleaning up resources upon object deletion.
 
-        static void setGameState(GameState new_state);
-        static GameState getGameState();
         void ignite();			// Initiates the game.
         void update();			// Updates the game logic and game state.
         void render();			// Renders each frame of the game.
         bool isRunning();		// Checks if the game is currently running.
+        static void setGameState(GameState new_state);
+        static GameState getGameState();
     };
 }
