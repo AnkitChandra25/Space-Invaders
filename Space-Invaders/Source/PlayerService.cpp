@@ -5,6 +5,7 @@
 
 namespace Player {
     using namespace Global;
+    using namespace Event;
 
         PlayerService::PlayerService()
         {
@@ -35,7 +36,7 @@ namespace Player {
         
         void PlayerService::processPlayerInput()
         {
-            Event::EventService* event_service = ServiceLocator::getInstance()->getEventService(); //get the event service object created in service locator
+            EventService* event_service = ServiceLocator::getInstance()->getEventService(); //get the event service object created in service locator
 
             if (event_service->isKeyboardEvent()) //check if a key has been pressed
             {
